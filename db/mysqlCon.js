@@ -14,23 +14,3 @@ const SERVER_CONFIG = {
 const mysqlCon = mysql.createConnection(LOCAL_CONFIG || SERVER_CONFIG)
 
 module.exports = mysqlCon
-
-
-
-
-
-
-/* 
-
-USERS DATA
--name 
--email
--role -> permissions 
--apps allowed 
-
-
-APPS DATA
-
-
-
-*/

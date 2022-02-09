@@ -1,0 +1,49 @@
+USER
+first_name
+last_name 
+username
+email
+phone
+is_active
+is_superuser
+is_staff
+date_joined
+last_login
+password
+
+    USER_ROLE
+    user_id
+    user_role
+
+ROLES
+name
+code
+description
+
+    ROLES_PERMISSIONS
+    role_id
+    permission_id
+
+PERMISSIONS
+code
+name
+description
+
+    USER_APPLICATION
+    user_id
+    application_id
+    verified
+    is_active
+    profile_id
+    password
+
+APPLICATION
+code 
+name
+description
+website
+api
+icon_class
+
+
+
