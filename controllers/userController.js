@@ -1,6 +1,5 @@
 const mysqlCon = require('../db/mysqlCon')
 const { StatusCodes } = require('http-status-codes')
-const res = require('express/lib/response')
 
 const createUser = (req, res) => {
     let sql = `insert into user(
@@ -19,9 +18,7 @@ const createUser = (req, res) => {
     ) values (?)`
     req.body.dateJoined = new Date(req.body.dateJoined)
     req.body.lastLogin = new Date(req.body.lastLogin)
-    let values = [Object.values(req.body)]
-    mysqlCon.query(sql, [values], (err, data, fields) => {
-        console.log(err, data, fields)
+    mysqlCon.query(sql, [Object.values(req.body)], (err, data, fields) => {
         if (err) throw err
         res
             .status(StatusCodes.CREATED)
@@ -29,15 +26,17 @@ const createUser = (req, res) => {
     })
 }
 
-const getUsers = () => {
+const getAllUsers = (req, res) => {
     let sql = `select * from user`
     mysqlCon.query(sql, (err, data, fields) => {
         if (err) throw err
         res
             .status(StatusCodes.OK)
-            .json({ data })
+            .json([ ...data ])
     })
 }
 
-
-module.exports = { createUser }
+module.exports = { 
+    createUser,
+    getAllUsers
+}
